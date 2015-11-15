@@ -1,0 +1,9 @@
+To avoid cutting the cable, a connector can be used.
+
+Connector name:
+FFC FPC 6-pin 1.0mm 1mm Pitch Ribbon Flat Connector   cost <1€/each
+
+Pins are not easy to solder, my experience:
+- needs stand while soldering
+- solder one cable front, next one back, and so on to reduce risk of soldering pins together
+- fix cables with rubber once soldered to avoid easy breakouts
