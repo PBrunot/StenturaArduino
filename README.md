@@ -10,12 +10,12 @@ I bought a used stentura SRT 200 on ebay and I need to :
 
 Reverse engineer serial pin layout
  -> done 
-   ( GND ) ( TX ) ( RTS? ) ( RX )  (   )
-      (  )   ( CTS?) (   ) (    )
+   ( GND ) ( TX ) ( RTS? ) ( RX  )  (    )
+      (  )   ( CTS?) (    ) (    )
 
 -> does not work maybe custom voltage are used?
 
-there's a 3k5 resistor after MAX232 TTL to RS level converter
+there's a 3k5 resistor on I/O after MAX232 TTL to RS level converter
 need to buy stentura srt cable and try again
 
 
