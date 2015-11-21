@@ -49,7 +49,11 @@
 #define DATA_REC 7
 
 // If debug, serial port outputs text with pressed keys
-#define DEBUG
+//#define DEBUG
+
+// Some keys are bouncing. Latches must be empty for DEBOUNCE_CYCLE until data is sent
+// Each cycle is roughly 0.5ms on Arduino Micro.
+#define DEBOUNCE_CYCLES 5
 
 #define ARRAY_SIZE(array) \
   (sizeof(array) / sizeof(*array))
@@ -59,8 +63,15 @@
 */
 void setup()
 {
+  
+#ifdef DEBUG    
+  // Initialize for console monitor
+  Serial.begin(57600);
+#else
   // Initialize serial as per WinSteno requirements 9600, 8 E 1
   Serial.begin(BAUD, SERIAL_8E1);
+#endif
+
   while (!Serial) ; 
 
   // Setup IOs
@@ -116,34 +127,40 @@ void setup()
 
 */
 
-// First 12 keys values =  B0 - B1 value , B3-B4 zero.
-//                               S       T       K       P       W       H       R        A      O      *      E      U         (english)
-//                               S       P       C       T       H       V       R        I      A      *      E      O         (see italian layout.pg)
+// First 14 keys values =  B0 - B1 value , B3-B4 zero.
+//                               S       T       K       P       W       H       R        A      O      *      E      U     F       R     (english)
+//                               S       P       C       T       H       V       R        I      A      *      E      O     C       S     (see italian layout.pg)
 
-// Next 11 keys values = B0 = 1, B1 = 0, B3-B4 value
-//                               F       R       P       B       L       G       T       S       D      Z      #
-//                               C       S       T       H       P       R       I       E       A      O      #
+// Next 9 keys values = B0 = 1, B1 = 0, B3-B4 value
+//                                     P       B       L       G       T       S       D      Z      #
+//                                     T       H       P       R       I       E       A      O      #
 
-unsigned long keys_values[] = {0x0300, 0x0500, 0x0900, 0x1100, 0x2100, 0x4100, 0x8100, 0x0102, 0x0104, 0x0108, 0x0110, 0x0120,
-                               0x0140, 0x0180, 0x0200, 0x0400, 0x0800, 0x0100, 0x0200, 0x0400, 0x8000, 0x0200, 0x0400 };
+word keys_values[] = {0x0300, 0x0500, 0x0900, 0x1100, 0x2100, 0x4100, 0x8100, 0x0102, 0x0104, 0x0108, 0x0110, 0x0120, 0x0140, 0x0180,
+                      0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000, 0x2, 0x4 };
 
 char keys[] = { 'S','P','C','T','H','V','R','I','A','*','E','O','C','S','T','H','P','R','I','E','A','O','#'};
 
-void construct_data(char raw_data[], char packed_data[])
+char tempstr[3] = {0,0,0};
+
+void construct_data(char raw_data[], byte packed_data[])
 {
   char coded_key[] = {0, 0, 0, 0};
+  for(int i = 0; i < 4; i++)
+  {
+    packed_data[i]=0;
+  }
 #ifdef DEBUG
-  Serial.write('Sending:');
+  Serial.write("Sending:");
 #endif
   for (int i = 0; i < 23; i++)
   {
     if (raw_data[i])
     {
       
-      if (i < 12)
+      if (i < 14)
       {
-        coded_key[0] = keys_values[i] >> 8;
-        coded_key[1] = keys_values[i] << 8;
+        coded_key[0] = (keys_values[i] >> 8) & 0xFF;
+        coded_key[1] = (keys_values[i]) & 0xFF;
         coded_key[2] = 0;
         coded_key[3] = 0;
       }
@@ -151,24 +168,35 @@ void construct_data(char raw_data[], char packed_data[])
       {
         coded_key[0] = 1;
         coded_key[1] = 0;
-        coded_key[2] = keys_values[i] >> 8;
-        coded_key[3] = keys_values[i] << 8;
+        coded_key[2] = (keys_values[i] >> 8) & 0xFF;
+        coded_key[3] = (keys_values[i]) & 0xFF;
       }
-  
+#ifdef DEBUG      
+      Serial.write(keys[i]);
+      Serial.print("( key value ");
+      Serial.print(keys_values[i]);
+      Serial.println(")");
+#endif
       // OR the results
       packed_data[0] |= coded_key[0];
       packed_data[1] |= coded_key[1];
       packed_data[2] |= coded_key[2];
       packed_data[3] |= coded_key[3];
 
-#ifdef DEBUG
-      Serial.write(keys[i]);
-#endif
     }
-#ifdef DEBUG    
-    Serial.write('\n');
-#endif    
   }
+
+#ifdef DEBUG    
+  Serial.print("Serial packet: ");
+  for(int i = 0; i < 4; i++)
+  {
+    if (packed_data[i] < 10) Serial.print("0"); // No support for %02X format string in Arduino
+    Serial.print(packed_data[i],HEX);
+    Serial.print(" ");
+  }
+  Serial.println();
+  Serial.write('\n');
+#endif  
 }
 
 /*
@@ -181,18 +209,21 @@ void loop()
   static char pressed_keys[24];
 
   // Keys packed in Gemini PR format, ready for transmission over serial
-  static char packed_keys[4];
+  static byte packed_keys[4];
 
   // Chord has been started, but is not complete (all keys released)
   static char in_progress;
 
   // Send data to host over serial
   static char send_data;
-
+  static int debounce_cycles = 0;
+ 
   int i;
   char pressed;
   char keys_down;
 
+  long duration = micros();
+  
   if (send_data) {
     construct_data(pressed_keys, packed_keys);
 
@@ -208,8 +239,11 @@ void loop()
     memset(pressed_keys, 0, sizeof(pressed_keys));
     send_data   = 0;
     in_progress = 0;
+    debounce_cycles = 0;
     digitalWrite(DATA_REC,  LOW); // Switch off LED, data has been transmitted
-  } else {
+  } 
+  else 
+  {
     // Latch current state of all keys
     digitalWrite(LATCH_EN, HIGH);
 
@@ -231,6 +265,7 @@ void loop()
         digitalWrite(DATA_REC,  HIGH); // Switch on LED to indicate there is data in the buffer
         keys_down   = 1;
         in_progress = 1;
+        debounce_cycles = 0;
       }
 
       /*
@@ -241,13 +276,30 @@ void loop()
       digitalWrite(CLK, LOW);
     }
 
+    // When no key are pressed, we wait for DEBOUNCE_CYCLES before to send data.
+    if (keys_down == 0)
+    {
+        debounce_cycles++;
+    }
+    
     // Make latch transparent again to capture next set of keystrokes
     digitalWrite(LATCH_EN, LOW);
 
     // Return data to host when all keys have been released
-    if (in_progress && !keys_down) {
+    if (in_progress && !keys_down && debounce_cycles > DEBOUNCE_CYCLES) {
       send_data = 1;
     }
+
+#ifdef DEBUG
+    if (duration % 10000 == 0)
+    {
+      duration = micros() - duration;
+      Serial.print("** Cycle duration :");
+      Serial.print(duration);
+      Serial.print(" us\n");
+    }
+#endif
+
   }
 }
 
