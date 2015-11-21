@@ -1,5 +1,6 @@
 /*
-   Copyright (c) 2015 Kevin Nygaard
+   Copyright (c) 2015 Pascal Brunot 
+   based on the works of Kevin Nygaard
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -41,9 +42,13 @@
 #define LATCH_EN 3
 #define TEST_EN  2
 #define BAUD     9600
+
+// Stentura has two leds, ON and DATA TRANSMIT.
+// To drive them two pins will be used.
 #define ON_LED   6
 #define DATA_REC 7
 
+// If debug, serial port outputs text with pressed keys
 #define DEBUG
 
 #define ARRAY_SIZE(array) \
@@ -54,9 +59,9 @@
 */
 void setup()
 {
-  // Initialize serial as per WinSteno requirements
+  // Initialize serial as per WinSteno requirements 9600, 8 E 1
   Serial.begin(BAUD, SERIAL_8E1);
-  while (!Serial) ;
+  while (!Serial) ; 
 
   // Setup IOs
   pinMode(CLK,      OUTPUT);
@@ -77,11 +82,7 @@ void setup()
 }
 
 /*
-   Convert raw Stentura byte data into packed Gemini PR format
-
-   Data that is seemingly skipped is rendundant, and as far as I can tell,
-   unnecessary
-
+   Convert raw Stentura byte data into WinSteno format
    Raw matrix mapping of Stentura 200 SRT from serial shift registers
     0: S-
     1: T-
@@ -110,8 +111,8 @@ void setup()
 
    WinSteno 2000 Protocol
 
-   In WinSteno2000 protocol each serial frame is 4 bytes.
-   Every key as value, chords are individual keys OR'd together.
+   In WinSteno2000 protocol each serial frame is 4 bytes numbered B0 to B4.
+   Every key has a unique value, chords are just the individual values OR'd together.
 
 */
 
@@ -207,7 +208,7 @@ void loop()
     memset(pressed_keys, 0, sizeof(pressed_keys));
     send_data   = 0;
     in_progress = 0;
-    digitalWrite(DATA_REC,  LOW);
+    digitalWrite(DATA_REC,  LOW); // Switch off LED, data has been transmitted
   } else {
     // Latch current state of all keys
     digitalWrite(LATCH_EN, HIGH);
@@ -227,7 +228,7 @@ void loop()
       // Once a key is pressed, it stays pressed until the chord is over
       pressed_keys[i] |= pressed;
       if (pressed) {
-        digitalWrite(DATA_REC,  HIGH); // Indicate there is data in the buffer
+        digitalWrite(DATA_REC,  HIGH); // Switch on LED to indicate there is data in the buffer
         keys_down   = 1;
         in_progress = 1;
       }
