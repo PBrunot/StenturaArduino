@@ -127,16 +127,16 @@ void setup()
 
 */
 
-// First 14 keys values =  B0 - B1 value , B3-B4 zero.
+// First 14 keys values =  B0 - B1 set to value little indian , B3-B4 zero.
 //                               S       T       K       P       W       H       R        A      O      *      E      U     F       R     (english)
 //                               S       P       C       T       H       V       R        I      A      *      E      O     C       S     (see italian layout.pg)
 
-// Next 9 keys values = B0 = 1, B1 = 0, B3-B4 value
+// Next 9 keys values = B0 = 1, B1 = 0, B3-B4 set value, little endian.
 //                                     P       B       L       G       T       S       D      Z      #
 //                                     T       H       P       R       I       E       A      O      #
 
 word keys_values[] = {0x0300, 0x0500, 0x0900, 0x1100, 0x2100, 0x4100, 0x8100, 0x0102, 0x0104, 0x0108, 0x0110, 0x0120, 0x0140, 0x0180,
-                      0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000, 0x2, 0x4 };
+                      0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000, 0x0002, 0x0004 };
 
 char keys[] = { 'S','P','C','T','H','V','R','I','A','*','E','O','C','S','T','H','P','R','I','E','A','O','#'};
 
@@ -160,7 +160,7 @@ void construct_data(char raw_data[], byte packed_data[])
       if (i < 14)
       {
         coded_key[0] = (keys_values[i] >> 8) & 0xFF;
-        coded_key[1] = (keys_values[i]) & 0xFF;
+        coded_key[1] = (keys_values[i] & 0xFF);
         coded_key[2] = 0;
         coded_key[3] = 0;
       }
@@ -169,7 +169,7 @@ void construct_data(char raw_data[], byte packed_data[])
         coded_key[0] = 1;
         coded_key[1] = 0;
         coded_key[2] = (keys_values[i] >> 8) & 0xFF;
-        coded_key[3] = (keys_values[i]) & 0xFF;
+        coded_key[3] = (keys_values[i] & 0xFF);
       }
 #ifdef DEBUG      
       Serial.write(keys[i]);
@@ -291,7 +291,7 @@ void loop()
     }
 
 #ifdef DEBUG
-    if (duration % 10000 == 0)
+    if (duration % 20000 == 0) // Output cycle duration from time to time.
     {
       duration = micros() - duration;
       Serial.print("** Cycle duration :");
