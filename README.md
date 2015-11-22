@@ -1,15 +1,18 @@
 # StenturaArduino
-Implement stentura SRT 200 stenograph machine serial protocol on arduino
+
+The goal of this project is to make a US Stentura 200 SRT stenograph machine compatibile with italian stenotype system.
+Since I was not able to reverse engineer RS232 pin layout, I used an Arduino Micro to interface switches and convert data.
+I did not implement the Stentura SRT Protocol, but a simpler one used by WinSteno 2000 softare.
 
 # Why this project?
 
-I bought a used stentura SRT 200 on ebay and I need to remap steno keys for italian language and make it work with PC steno software, like plover.
+I bought a used stentura SRT 200 on ebay and I need to remap steno keys for italian language and make it work with PC steno software, like plover or WinSteno 2000.
 
-Remapping the keys is just a substitution scheme, so it could be done at PC level. However the dictionaries used by PC steno software needs to be updated for the new map. 
+Since remapping the keys is just a substitution scheme, so it could be done at PC level. However the dictionaries used by PC steno software needs to be updated for the new map. 
 
 I was not able to use the serial comunication, so I went for hardware interface with Arduino.
 
-# Documetns
+# Documents
 
 Reverse engineer serial pin layout
  > does not work maybe custom voltage are used?
@@ -19,9 +22,9 @@ Reverse engineer serial pin layout
 Interface an arduino controller to the key latches board
  > he did the hardwork before me: https://github.com/balthamos/steno-arduino
 
-Issue is existing implementation is using Gemini PR protocol, which my italian software steno does not handle. Therefore I am implementing stenograph protocol on arduino.
-
 # Next steps
 
-Reverse engineer stentura srt cable
-Document arduino board layout
+Reverse engineer RS232 with stentura srt cable (so that other people can save 30$ )
+Document arduino board layout 
+Develop a PCB for more robust handling
+Develop a Plover driver using WinSteno protocol 
