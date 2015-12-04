@@ -51,8 +51,12 @@
 // If debug, serial port outputs text with pressed keys
 //#define DEBUG
 
-// Some keys are bouncing. Latches must be empty for DEBOUNCE_CYCLE until data is sent
-// Each cycle is roughly 0.5ms on Arduino Micro.
+// Some keys are bouncing. By design, Stentura board already eliminates most of bounces with the latches.
+// However as we send data everytime no pressed key is found, a bounce may happen since we poll at roughly 1.5 Mhz.
+// (this can be seen experimentally pressing single keys on the machine).
+// To avoid bounces, we must read empty data for DEBOUNCE_CYCLES before to send acquired keys. 
+//
+// Each cycle is roughly 0.5ms on Arduino Nano. 5 cycles was enough to eliminate all bounces.
 #define DEBOUNCE_CYCLES 5
 
 #define ARRAY_SIZE(array) \
@@ -122,29 +126,36 @@ void setup()
 
    WinSteno 2000 Protocol
 
-   In WinSteno2000 protocol each serial frame is 4 bytes numbered B0 to B4.
+   In WinSteno2000 protocol each serial frame is 4 bytes.
+   B0-B3 are the bytes in the order seen on the serial line.
+   
    Every key has a unique value, chords are just the individual values OR'd together.
 
+   First 14 keys values :  B0 - B1 set to value (little indian), B2-B3 set to zero.
+                                 S       T       K       P       W       H       R        A      O      *      E      U     F       R     (english)
+                                 S       P       C       T       H       V       R        I      A      *      E      O     C       S     (see italian layout.jpg)
+
+   Next 9 keys values : B0 = 1, B1 = 0, B2-B3 set to key value (little endian)
+                                       P       B       L       G       T       S       D      Z      #   (english)
+                                       T       H       P       R       I       E       A      O      #   (italian)
+
 */
-
-// First 14 keys values =  B0 - B1 set to value little indian , B3-B4 zero.
-//                               S       T       K       P       W       H       R        A      O      *      E      U     F       R     (english)
-//                               S       P       C       T       H       V       R        I      A      *      E      O     C       S     (see italian layout.pg)
-
-// Next 9 keys values = B0 = 1, B1 = 0, B3-B4 set value, little endian.
-//                                     P       B       L       G       T       S       D      Z      #
-//                                     T       H       P       R       I       E       A      O      #
 
 word keys_values[] = {0x0300, 0x0500, 0x0900, 0x1100, 0x2100, 0x4100, 0x8100, 0x0102, 0x0104, 0x0108, 0x0110, 0x0120, 0x0140, 0x0180,
                       0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000, 0x0002, 0x0004 };
 
+// To output pressed keys for debugging only
 char keys[] = { 'S','P','C','T','H','V','R','I','A','*','E','O','C','S','T','H','P','R','I','E','A','O','#'};
 
+// To avoid dynamic allocation
 char tempstr[3] = {0,0,0};
 
+
+// Encode the pressed key array into a 4 bytes packet to be sent on serial port.
 void construct_data(char raw_data[], byte packed_data[])
 {
-  char coded_key[] = {0, 0, 0, 0};
+  static char coded_key[] = {0, 0, 0, 0};
+  
   for(int i = 0; i < 4; i++)
   {
     packed_data[i]=0;
@@ -208,7 +219,7 @@ void loop()
   // 0 means not pressed, 1 means pressed
   static char pressed_keys[24];
 
-  // Keys packed in Gemini PR format, ready for transmission over serial
+  // Keys packed in WinSteno2000 format, ready for transmission over serial
   static byte packed_keys[4];
 
   // Chord has been started, but is not complete (all keys released)
