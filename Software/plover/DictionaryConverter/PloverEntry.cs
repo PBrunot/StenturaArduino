@@ -44,13 +44,13 @@ namespace DictionaryConverter
             }
             if (value.Contains("&+i;"))
             {
-                value = String.Format("{{{0}^}}", value.Replace("&+i;", ""));
+                value = String.Format("{0}{{^}}", value.Replace("&+i;", ""));
             }
             if (value.Contains("&rb;"))
             {
-                value = String.Format("{{^{0}}}", value.Replace("&rb;", ""));
+                value = String.Format("{{^}}{0}", value.Replace("&rb;", ""));
             }
-            return value;
+            return value.Trim();
         }
     }
 }

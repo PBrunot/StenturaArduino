@@ -14,11 +14,11 @@ namespace DictionaryConverter
         /// with the standard layout here:
         /// https://github.com/balthamos/steno-arduino/blob/master/steno-arduino.ino
         /// </summary>
-        static List<char> ENGLISH_L = new List<char>() { 'S', 'T', 'K', 'P', 'W', 'H', 'R', 'A', 'O', '*', 'E', 'U'  };
-        static List<char> ITALIAN_L = new List<char>() { 'S', 'P', 'C', 'T', 'H', 'V', 'R', 'I', 'A', '*', 'E', 'O' };
+        public static List<char> ENGLISH_L = new List<char>() { 'S', 'T', 'K', 'P', 'W', 'H', 'R', 'A', 'O', '*', 'E', 'U'  };
+        public static List<char> ITALIAN_L = new List<char>() { 'S', 'P', 'C', 'T', 'H', 'V', 'R', 'I', 'A', '*', 'E', 'O' };
 
-        static List<char> ENGLISH_R = new List<char>() { 'F', 'R', 'P', 'B', 'L', 'G', 'T', 'S', 'D', 'Z', '#' };
-        static List<char> ITALIAN_R = new List<char>() { 'C', 'S', 'T', 'H', 'P', 'R', 'I', 'E', 'A', 'O', '$' };
+        public static List<char> ENGLISH_R = new List<char>() { 'F', 'R', 'P', 'B', 'L', 'G', 'T', 'S', 'D', 'Z', '#' };
+        public static List<char> ITALIAN_R = new List<char>() { 'c', 's', 't', 'h', 'p', 'r', 'i', 'e', 'a', 'o', '#' };
 
         /// <summary>
         /// Translate a single italian stenokey to the corresponding english stenokey

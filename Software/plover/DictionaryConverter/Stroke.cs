@@ -34,12 +34,17 @@ namespace DictionaryConverter
         /// <summary>
         /// Plover left part of the stroke
         /// </summary>
-        public string LeftStroke { get; set; }
+        public List<char> LeftStroke { get; set; }
         /// <summary>
         /// Plover right part of the stroke
         /// </summary>
-        public string RightStroke { get; set; }
-
+        public List<char> RightStroke { get; set; }
+        
+        public StrokeConverter()
+        {
+            this.LeftStroke = new List<char>();
+            this.RightStroke = new List<char>();
+        }
         /// <summary>
         /// WinSteno uses caps to differentiate left and right strokes and blackslash for as stroke separator.
         /// Also, language characters remapping will be applied.
@@ -58,13 +63,16 @@ namespace DictionaryConverter
                 {
                     foreach (char c in singleStroke.ToCharArray())
                     {
+
                         if (char.IsUpper(c) || c == '*')
                         {
-                            s.LeftStroke += char.ToUpper(c, ci); //Remapper.RemapLeft(char.ToUpper(c, ci));
+                            s.LeftStroke.Add(char.ToUpper(c, ci)); //Remapper.RemapLeft(char.ToUpper(c, ci));
+                            s.LeftStroke.OrderBy(_c => Remapper.ITALIAN_L.IndexOf(_c));
                         }
                         else
                         {
-                            s.RightStroke += char.ToUpper(c, ci);  //Remapper.RemapRight(char.ToUpper(c, ci));
+                            s.RightStroke.Add(c);  //Remapper.RemapRight(char.ToUpper(c, ci));
+                            s.RightStroke.OrderBy(_c => Remapper.ITALIAN_R.IndexOf(_c));
                         }
                     }
                     output.Add(s);
@@ -79,7 +87,9 @@ namespace DictionaryConverter
         /// <returns>String like ABC-ABC</returns>
         public override string ToString()
         {
-            return String.Format("{0}-{1}", LeftStroke, RightStroke);
+            return String.Format("{0}{1}", 
+                string.Join("",LeftStroke), 
+                string.Join("",RightStroke)).Replace('$','#');
         }
     }
 }
