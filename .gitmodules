@@ -1,6 +1,3 @@
-[submodule "Software/plover"]
-	path = Software/plover
-	url = https://github.com/openstenoproject/plover
 [submodule ".\\Software\\plover"]
 	path = .\\Software\\plover
 	url = git://github.com/openstenoproject/plover.git
