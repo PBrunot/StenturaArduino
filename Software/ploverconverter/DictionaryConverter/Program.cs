@@ -23,7 +23,7 @@ namespace DictionaryConverter
                     Console.WriteLine("\t{0} - {1}", dup.Complete, dup.Partial);
                 }
             }
-            var ploverEntries = filtered.Select(_se => PloverEntry.FromWinstenoEntry(_se));
+            var ploverEntries = filtered.SelectMany(_se => PloverEntry.FromWinstenoEntry(_se)).Where(_pe=>_pe != null);
             var plovedFiltered = ploverEntries.GroupBy(_s => _s.Strokes.ToString()).Select(_g => _g.First());
            
             var outFile = new FileInfo(String.Format("{0}.json", Path.GetFileNameWithoutExtension(sourceFile.FullName)));
