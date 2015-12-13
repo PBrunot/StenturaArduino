@@ -1,0 +1,6 @@
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\bin\Debug\DictionaryConverter.exe.config
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\bin\Debug\DictionaryConverter.exe
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\bin\Debug\DictionaryConverter.pdb
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\obj\Debug\DictionaryConverter.csprojResolveAssemblyReference.cache
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\obj\Debug\DictionaryConverter.exe
+F:\Pascal\Documenti\StenturaArduino\Software\plover\DictionaryConverter\obj\Debug\DictionaryConverter.pdb
