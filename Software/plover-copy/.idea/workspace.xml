@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb54c85c-cc8c-400d-9f68-53e0286dbfbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plover/assets/voc-it.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plover/machine/stenturait.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/__init__.py" afterPath="$PROJECT_DIR$/plover/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/app.py" afterPath="$PROJECT_DIR$/plover/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/config.py" afterPath="$PROJECT_DIR$/plover/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/base.py" afterPath="$PROJECT_DIR$/plover/dictionary/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/json_dict.py" afterPath="$PROJECT_DIR$/plover/dictionary/json_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/rtfcre_dict.py" afterPath="$PROJECT_DIR$/plover/dictionary/rtfcre_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/test_default_dict.py" afterPath="$PROJECT_DIR$/plover/dictionary/test_default_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/test_json_dict.py" afterPath="$PROJECT_DIR$/plover/dictionary/test_json_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/dictionary/test_rtfcre_dict.py" afterPath="$PROJECT_DIR$/plover/dictionary/test_rtfcre_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/exception.py" afterPath="$PROJECT_DIR$/plover/exception.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/gui/keyboard_config.py" afterPath="$PROJECT_DIR$/plover/gui/keyboard_config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/gui/main.py" afterPath="$PROJECT_DIR$/plover/gui/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/machine/base.py" afterPath="$PROJECT_DIR$/plover/machine/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/machine/keymap.py" afterPath="$PROJECT_DIR$/plover/machine/keymap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/machine/registry.py" afterPath="$PROJECT_DIR$/plover/machine/registry.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/machine/stentura.py" afterPath="$PROJECT_DIR$/plover/machine/stentura.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/machine/treal.py" afterPath="$PROJECT_DIR$/plover/machine/treal.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/main.py" afterPath="$PROJECT_DIR$/plover/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/oslayer/config.py" afterPath="$PROJECT_DIR$/plover/oslayer/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/oslayer/keyboardcontrol.py" afterPath="$PROJECT_DIR$/plover/oslayer/keyboardcontrol.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/oslayer/winkeyboardcontrol.py" afterPath="$PROJECT_DIR$/plover/oslayer/winkeyboardcontrol.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/steno.py" afterPath="$PROJECT_DIR$/plover/steno.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/test_config.py" afterPath="$PROJECT_DIR$/plover/test_config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/test_steno.py" afterPath="$PROJECT_DIR$/plover/test_steno.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/test_translation.py" afterPath="$PROJECT_DIR$/plover/test_translation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plover/translation.py" afterPath="$PROJECT_DIR$/plover/translation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="plover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,11 +44,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="voc-it.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plover/assets/voc-it.json">
+      <file leaf-file-name="user.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plover/assets/user.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4917" column="0" selection-start-line="4917" selection-start-column="0" selection-end-line="4917" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commands.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plover/assets/commands.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dictionary_editor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plover/gui/dictionary_editor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.39895698">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -115,7 +108,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -129,12 +122,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="41" />
-    <option name="y" value="44" />
-    <option name="width" value="1260" />
-    <option name="height" value="694" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -159,7 +152,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -167,15 +159,13 @@
               <option name="myItemId" value="plover" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="&lt; Python 2.7.10 (C:\Python27\python.exe) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -184,40 +174,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="plover-copy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -408,15 +377,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="44" width="1260" height="694" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25749063" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46928328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25749063" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -454,6 +423,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/plover/translation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plover/machine/stenturait.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="267" column="18" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/plover/dictionary/json_dict.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -466,14 +451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plover/assets/voc-it.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -723,13 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plover/gui/dictionary_editor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plover/gui/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.25614">
@@ -799,10 +769,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plover/assets/voc-it.json">
+    <entry file="file://$PROJECT_DIR$/plover/assets/main.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7846154">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plover/assets/user.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4917" column="0" selection-start-line="4917" selection-start-column="0" selection-end-line="4917" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plover/assets/commands.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plover/gui/dictionary_editor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.39895698">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
