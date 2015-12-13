@@ -11,19 +11,26 @@ namespace DictionaryConverter
         public StrokeList Strokes { get; set; }
         public string Value { get; set; }
 
-        public static PloverEntry FromWinstenoEntry(WinStenoEntry wse)
+        public static List<PloverEntry> FromWinstenoEntry(WinStenoEntry wse)
         {
-            PloverEntry pe = new PloverEntry();
-            pe.Strokes = wse.PloverStrokes;
-            if (String.IsNullOrEmpty(wse.Complete))
+            List<PloverEntry> entries = new List<PloverEntry>();
+            
+            if (!String.IsNullOrEmpty(wse.Complete))
             {
-                pe.Value = ConvertValue(wse.Partial);
-            }
-            else
-            {
+                PloverEntry pe = new PloverEntry();
+                pe.Strokes = wse.PloverStrokes;
                 pe.Value = ConvertValue(wse.Complete);
+                entries.Add(pe);
             }
-            return pe;
+            if (!String.IsNullOrEmpty(wse.Partial))
+            {
+                PloverEntry pe = new PloverEntry();
+                pe.Strokes = wse.PloverStrokes;
+                pe.Strokes.Last().RightStroke.Add('&');
+                pe.Value = ConvertValue(wse.Partial + "&rb;");
+                entries.Add(pe);
+            }
+            return entries;
         }
         private static string ConvertValue(String value)
         {
